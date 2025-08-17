@@ -1850,6 +1850,11 @@ textarea.form-input::-webkit-realizer {
     width: 90px;
     height: 90px;
   }
+ .sidebar-one {
+    max-height: none;     /* o: max-height: 260px; */
+    overflow: visible;    /* para que no recorte el contenido */
+    margin-bottom: 16px;  /* aire extra debajo */
+  }
 }
 .sidebar-one {
   margin-bottom: 25px;
