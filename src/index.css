@@ -1850,12 +1850,36 @@ textarea.form-input::-webkit-realizer {
     width: 90px;
     height: 90px;
   }
- .sidebar-one {
-    max-height: none;     /* o: max-height: 260px; */
-    overflow: visible;    /* para que no recorte el contenido */
-    margin-bottom: 16px;  /* aire extra debajo */
+
+}
+/* ---- FIX boton Descargar en móvil ---- */
+@media (max-width: 480px) {
+  .sidebar-one {
+    max-height: none !important;
+    overflow: visible !important;
+    margin-bottom: 20px;     /* da aire */
+  }
+
+  .cv-card {
+    max-height: none !important;
+    overflow: visible !important;
+    padding-bottom: 14px;    /* evita corte del borde del botón */
+    margin-bottom: 16px;
+  }
+
+  .cv-card__text {
+    margin-bottom: 12px;     /* separa texto del botón */
+  }
+
+  .btn-rose-outline {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 16px;
+    line-height: 1.2;
   }
 }
+
 .sidebar-one {
   margin-bottom: 25px;
   max-height: 150px;
