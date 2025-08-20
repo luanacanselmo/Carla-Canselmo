@@ -1671,117 +1671,6 @@ textarea.form-input::-webkit-realizer {
   }
 }
 
-@media (min-width: 1250px) {
-  body::-webkit-scrollbar {
-    width: 20px;
-  }
-  body::-webkit-scrollbar-track {
-    background: var(--smoky-black);
-  }
-
-  body::-webkit-scrollbar-thumb {
-    border: 5px solid var(--smoky-black);
-    background: hsla(0, 0%, 100%, 0.1);
-    border-radius: 20px;
-    box-shadow: inset 1px 1px 0 hsla(0, 0%, 100%, 0.11),
-      inset -1px -1px 0 hsla(0, 0%, 100%, 0.11);
-  }
-
-  body::-webkit-scrollbar-thumb:hover {
-    background: hsla(0, 0%, 100%, 0.15);
-  }
-  body::-webkit-scrollbar-button {
-    height: 60px;
-  }
-
-  .sidebar,
-  article {
-    width: auto;
-  }
-
-  article {
-    min-height: 100%;
-  }
-
-  main {
-    max-width: 1200px;
-    margin-inline: auto;
-    display: flex;
-    justify-content: center;
-    align-items: stretch;
-    gap: 25px;
-  }
-
-  .main-content {
-    min-width: 75%;
-    width: 75%;
-    margin: 0;
-  }
-
-  .sidebar {
-    position: sticky;
-    top: 60px;
-    max-height: max-content;
-    height: 100%;
-    margin-bottom: 0;
-    padding-top: 60px;
-    z-index: 1;
-  }
-
-  .sidebar-info {
-    flex-direction: column;
-  }
-
-  .avatar-box img {
-    width: 150px;
-  }
-
-  .info-content .name {
-    white-space: nowrap;
-    text-align: center;
-  }
-
-  .info-content .title {
-    margin: auto;
-  }
-
-  .info-more-btn {
-    display: none;
-  }
-
-  .sidebar-info-more {
-    opacity: 1;
-    visibility: visible;
-  }
-
-  .contacts-list {
-    grid-template-columns: 1fr;
-  }
-
-  .contact-info :is(.contact-link) {
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-  }
-
-  .contact-info :is(.contact-link, time, address) {
-    --fs7: 14px;
-    font-weight: var(--fw300);
-  }
-
-  .separator:last-of-type {
-    margin: 15px 0;
-    opacity: 0;
-  }
-
-  .social-list {
-    justify-content: center;
-  }
-
-  .timeline-text {
-    max-width: 700px;
-  }
-} /* Contenedor centrado */
 .cv-card {
   display: flex;
   flex-direction: column;
@@ -1889,3 +1778,29 @@ textarea.form-input::-webkit-realizer {
   transition: var(--transition2);
 }
 
+/* === Parche mínimo: ancho AUTO según pantalla === */
+
+/* Contenedor fluido (sin grid ni max-content) */
+main{
+  width: 96vw;          /* ocupa casi todo el ancho visible */
+  max-width: 1600px;    /* límite opcional para ultra-wide */
+  margin: 30px auto 100px;
+}
+
+/* Anular los anchos fijos heredados (520/700/950) */
+@media (min-width: 580px){
+  .sidebar, article{ width: auto !important; max-width: 100% !important; margin-inline: 0 !important; }
+}
+@media (min-width: 768px){
+  .sidebar, article{ width: auto !important; }
+}
+@media (min-width: 1024px){
+  .sidebar, article{ width: auto !important; }
+  .main-content{ width: auto !important; margin: 0 !important; }
+  .main-content > article{ width: 100% !important; max-width: none !important; }
+}
+
+/* (opcional) evitar que la card extra se recorte en desktop */
+@media (min-width: 1024px){
+  .sidebar-one{ max-height: none !important; overflow: visible !important; }
+}
