@@ -81,6 +81,19 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 });
 
+// ===== CARRUSEL DE TECNOLOGÍAS =====
+// Duplica los logos para que la animación se repita sin cortes
+document.addEventListener('DOMContentLoaded', function() {
+    const list = document.querySelector('.clients-list');
+    if (!list) return;
+
+    Array.from(list.children).forEach(item => {
+        const clone = item.cloneNode(true);
+        clone.setAttribute('aria-hidden', 'true');
+        list.appendChild(clone);
+    });
+});
+
 // ===== TEST MANUAL =====
 // Función para probar manualmente en la consola
 window.testNavigation = function(pageId) {
